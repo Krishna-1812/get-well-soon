@@ -133,16 +133,61 @@
     return `<g class="petals-group">${outer}${inner}</g><circle cx="0" cy="0" r="8" fill="${centerColor}"/>`;
   }
 
+  function rotatePoint([px, py], deg) {
+    const r = (deg * Math.PI) / 180;
+    return [px * Math.cos(r) - py * Math.sin(r), px * Math.sin(r) + py * Math.cos(r)];
+  }
+
+  function ranunculusMarkup(colorA, colorB, colorC, centerColor) {
+    const offsets = [
+      [0, -1], [0.87, -0.5], [0.87, 0.5],
+      [0, 1], [-0.87, 0.5], [-0.87, -0.5],
+    ];
+    const outer = offsets.map(([dx, dy]) =>
+      `<circle cx="${(dx * 20).toFixed(1)}" cy="${(dy * 20).toFixed(1)}" r="15" fill="${colorA}"/>`
+    ).join('');
+    const mid = offsets.map((p) => rotatePoint(p, 30)).map(([dx, dy]) =>
+      `<circle cx="${(dx * 13).toFixed(1)}" cy="${(dy * 13).toFixed(1)}" r="11" fill="${colorB}" opacity="0.95"/>`
+    ).join('');
+    const inner = offsets.map((p) => rotatePoint(p, 15)).map(([dx, dy]) =>
+      `<circle cx="${(dx * 7).toFixed(1)}" cy="${(dy * 7).toFixed(1)}" r="7" fill="${colorC}" opacity="0.95"/>`
+    ).join('');
+    return `<g class="petals-group">${outer}${mid}${inner}</g><circle cx="0" cy="0" r="5" fill="${centerColor}"/>`;
+  }
+
   function flowerMarkup() {
-    const type = pick(['blossom', 'daisy', 'peony']);
+    const type = pick(['blossom', 'daisy', 'peony', 'ranunculus']);
     const colorA = pick(PETAL_COLORS);
     let colorB = pick(PETAL_COLORS);
     if (colorB === colorA) colorB = pick(PETAL_COLORS);
+    let colorC = pick(PETAL_COLORS);
+    if (colorC === colorB) colorC = pick(PETAL_COLORS);
     const centerColor = pick(CENTER_COLORS);
 
     if (type === 'daisy') return daisyMarkup(colorA, centerColor);
     if (type === 'peony') return peonyMarkup(colorA, colorB, centerColor);
+    if (type === 'ranunculus') return ranunculusMarkup(colorA, colorB, colorC, centerColor);
     return blossomMarkup(colorA, colorB, centerColor);
+  }
+
+  function fillerMarkup(base) {
+    let markup = '';
+    const clusters = randInt(5, 8);
+    for (let c = 0; c < clusters; c++) {
+      const angleDeg = rand(-48, 48);
+      const radius = rand(105, 215);
+      const angleRad = (angleDeg * Math.PI) / 180;
+      const cx = base.x + radius * Math.sin(angleRad);
+      const cy = base.y - radius * Math.cos(angleRad);
+      const dotCount = randInt(3, 5);
+      for (let d = 0; d < dotCount; d++) {
+        const dx = cx + rand(-14, 14);
+        const dy = cy + rand(-14, 14);
+        const r = rand(1.6, 3);
+        markup += `<circle cx="${dx.toFixed(1)}" cy="${dy.toFixed(1)}" r="${r.toFixed(1)}" fill="#fff8fb" opacity="${rand(0.7, 0.95).toFixed(2)}"/>`;
+      }
+    }
+    return markup;
   }
 
   function generateBouquet() {
@@ -152,7 +197,7 @@
     if (!stemsG || !flowersG) return;
 
     const base = { x: 210, y: 260 };
-    const count = randInt(7, 10);
+    const count = randInt(10, 14);
 
     let stemsMarkup = '';
     let flowersMarkup = '';
@@ -160,13 +205,13 @@
 
     for (let i = 0; i < count; i++) {
       const normalized = count === 1 ? 0 : (i / (count - 1)) * 2 - 1; // -1..1
-      const angleDeg = normalized * 42 + rand(-6, 6);
-      const radius = 205 - Math.abs(normalized) * 75 + rand(-10, 10);
+      const angleDeg = normalized * 47 + rand(-6, 6);
+      const radius = 212 - Math.abs(normalized) * 78 + rand(-10, 10);
       const angleRad = (angleDeg * Math.PI) / 180;
 
       const x = base.x + radius * Math.sin(angleRad);
       const y = base.y - radius * Math.cos(angleRad);
-      const size = Math.max(0.55, Math.min(1.35, 1.3 - Math.abs(normalized) * 0.55 + rand(-0.06, 0.06)));
+      const size = Math.max(0.55, Math.min(1.5, 1.4 - Math.abs(normalized) * 0.6 + rand(-0.06, 0.06)));
 
       // curved stem from the base of the bouquet up to the flower
       const bulge = (x - base.x) * 0.18;
@@ -199,7 +244,7 @@
     }
 
     stemsG.innerHTML = stemsMarkup;
-    flowersG.innerHTML = flowersMarkup + sparkleMarkup;
+    flowersG.innerHTML = fillerMarkup(base) + flowersMarkup + sparkleMarkup;
 
     if (caption) {
       caption.textContent = `${count} fresh flowers, picked just for you today 🌸`;
