@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Well Soon, Honey 💗</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Falling petals layer -->
+  <div class="petals" id="petals" aria-hidden="true"></div>
+
+  <!-- Floating hearts layer (triggered by button) -->
+  <div class="hearts-layer" id="heartsLayer" aria-hidden="true"></div>
+
+  <div class="clouds" aria-hidden="true">
+    <div class="cloud cloud1">☁️</div>
+    <div class="cloud cloud2">☁️</div>
+    <div class="cloud cloud3">☁️</div>
+  </div>
+
+  <main class="page">
+
+    <section class="hero">
+      <div class="sun" aria-hidden="true">
+        <span class="sun-face">🌞</span>
+        <div class="sun-rays"></div>
+      </div>
+
+      <div class="bouquet" aria-hidden="true">
+        <svg viewBox="0 0 420 260" class="bouquet-svg">
+          <!-- stems -->
+          <path d="M210 260 C 205 180, 150 150, 120 100" stroke="#7bab6e" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M210 260 C 208 170, 210 140, 210 70" stroke="#7bab6e" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M210 260 C 215 180, 270 150, 300 100" stroke="#7bab6e" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M210 260 C 200 190, 170 170, 150 140" stroke="#7bab6e" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M210 260 C 220 190, 250 170, 270 140" stroke="#7bab6e" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+          <!-- leaves -->
+          <ellipse cx="175" cy="200" rx="18" ry="7" fill="#8fc07f" transform="rotate(-35 175 200)"/>
+          <ellipse cx="245" cy="200" rx="18" ry="7" fill="#8fc07f" transform="rotate(35 245 200)"/>
+          <ellipse cx="210" cy="150" rx="16" ry="6" fill="#9fce8f" transform="rotate(0 210 150)"/>
+
+          <!-- flower 1 -->
+          <g transform="translate(120,100)">
+            <g class="flower sway1">
+              <g class="petals-group">
+                <circle cx="0" cy="-18" r="14" fill="#ffc4dd"/>
+                <circle cx="17" cy="-9" r="14" fill="#ffb0cf"/>
+                <circle cx="17" cy="9" r="14" fill="#ffc4dd"/>
+                <circle cx="0" cy="18" r="14" fill="#ffb0cf"/>
+                <circle cx="-17" cy="9" r="14" fill="#ffc4dd"/>
+                <circle cx="-17" cy="-9" r="14" fill="#ffb0cf"/>
+              </g>
+              <circle cx="0" cy="0" r="10" fill="#ffe066"/>
+            </g>
+          </g>
+
+          <!-- flower 2 (center, biggest) -->
+          <g transform="translate(210,70)">
+            <g class="flower sway2">
+              <g class="petals-group">
+                <circle cx="0" cy="-22" r="17" fill="#ff9dc4"/>
+                <circle cx="21" cy="-11" r="17" fill="#ffb6d9"/>
+                <circle cx="21" cy="11" r="17" fill="#ff9dc4"/>
+                <circle cx="0" cy="22" r="17" fill="#ffb6d9"/>
+                <circle cx="-21" cy="11" r="17" fill="#ff9dc4"/>
+                <circle cx="-21" cy="-11" r="17" fill="#ffb6d9"/>
+              </g>
+              <circle cx="0" cy="0" r="12" fill="#ffe066"/>
+            </g>
+          </g>
+
+          <!-- flower 3 -->
+          <g transform="translate(300,100)">
+            <g class="flower sway3">
+              <g class="petals-group">
+                <circle cx="0" cy="-18" r="14" fill="#ffb0cf"/>
+                <circle cx="17" cy="-9" r="14" fill="#ffc4dd"/>
+                <circle cx="17" cy="9" r="14" fill="#ffb0cf"/>
+                <circle cx="0" cy="18" r="14" fill="#ffc4dd"/>
+                <circle cx="-17" cy="9" r="14" fill="#ffb0cf"/>
+                <circle cx="-17" cy="-9" r="14" fill="#ffc4dd"/>
+              </g>
+              <circle cx="0" cy="0" r="10" fill="#ffe066"/>
+            </g>
+          </g>
+
+          <!-- small blossoms -->
+          <g transform="translate(150,140) scale(0.6)">
+            <g class="flower sway1">
+              <g class="petals-group">
+                <circle cx="0" cy="-18" r="14" fill="#fff0f6"/>
+                <circle cx="17" cy="-9" r="14" fill="#ffdcec"/>
+                <circle cx="17" cy="9" r="14" fill="#fff0f6"/>
+                <circle cx="0" cy="18" r="14" fill="#ffdcec"/>
+                <circle cx="-17" cy="9" r="14" fill="#fff0f6"/>
+                <circle cx="-17" cy="-9" r="14" fill="#ffdcec"/>
+              </g>
+              <circle cx="0" cy="0" r="9" fill="#ffd15c"/>
+            </g>
+          </g>
+          <g transform="translate(270,140) scale(0.6)">
+            <g class="flower sway3">
+              <g class="petals-group">
+                <circle cx="0" cy="-18" r="14" fill="#ffdcec"/>
+                <circle cx="17" cy="-9" r="14" fill="#fff0f6"/>
+                <circle cx="17" cy="9" r="14" fill="#ffdcec"/>
+                <circle cx="0" cy="18" r="14" fill="#fff0f6"/>
+                <circle cx="-17" cy="9" r="14" fill="#ffdcec"/>
+                <circle cx="-17" cy="-9" r="14" fill="#fff0f6"/>
+              </g>
+              <circle cx="0" cy="0" r="9" fill="#ffd15c"/>
+            </g>
+          </g>
+
+          <!-- wrap -->
+          <path d="M140 220 L210 260 L280 220 L300 175 L120 175 Z" fill="#ffe3ef" stroke="#ffb6d9" stroke-width="3"/>
+          <path d="M210 260 L190 175 M210 260 L230 175" stroke="#ffb6d9" stroke-width="2" opacity="0.6"/>
+          <!-- ribbon -->
+          <path d="M195 200 C 185 190, 185 210, 195 205 C 205 210, 205 190, 195 200 Z" fill="#ff7fae"/>
+        </svg>
+      </div>
+
+      <h1 class="title">Get Well Soon,<br><span class="name">Honey</span> <span class="wobble">🌷</span></h1>
+      <p class="subtitle">Sending you a bouquet of hugs, giggles &amp; sunshine 💕</p>
+
+      <a href="#note" class="scroll-hint" aria-label="Scroll down">
+        <span>Read your card</span>
+        <span class="chevron">⌄</span>
+      </a>
+    </section>
+
+    <section class="note" id="note">
+      <div class="card">
+        <div class="card-flowers" aria-hidden="true">🌸🌷🌼</div>
+        <h2>Dearest Honey,</h2>
+        <p>
+          Every day without your laugh feels a little too quiet — so here's a whole
+          garden to keep you company until you're back on your feet! 🌻
+        </p>
+        <p>
+          You've got the strength of a hundred sunflowers and the sparkle of a
+          thousand stars. Rest well, sip your favourite chai, watch silly shows
+          guilt-free, and let yourself be pampered.
+        </p>
+        <p>
+          We're all cheering for you from right here — sending warm hugs, soft
+          blankets, and endless good vibes your way. 🌈
+        </p>
+        <p class="signature">With all our love,<br>Your favourite people 💗</p>
+      </div>
+    </section>
+
+    <section class="wishes" aria-label="Get well wishes">
+      <h2 class="wishes-title">A little bouquet of wishes 🌼</h2>
+      <div class="wish-grid">
+        <div class="wish-card">
+          <span class="wish-emoji">🌹</span>
+          <p>May every hour bring you closer to feeling 100%!</p>
+        </div>
+        <div class="wish-card">
+          <span class="wish-emoji">🦋</span>
+          <p>Rest, recharge, and let the healing butterflies flutter around you.</p>
+        </div>
+        <div class="wish-card">
+          <span class="wish-emoji">🌈</span>
+          <p>Better days (and endless snacks) are just around the corner!</p>
+        </div>
+        <div class="wish-card">
+          <span class="wish-emoji">💐</span>
+          <p>This whole garden was grown just to make you smile today.</p>
+        </div>
+        <div class="wish-card">
+          <span class="wish-emoji">🧸</span>
+          <p>Sending the comfiest, warmest, squishiest hug you've ever had.</p>
+        </div>
+        <div class="wish-card">
+          <span class="wish-emoji">✨</span>
+          <p>You are so loved, so missed, and so ready to bounce back!</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="love-button-section">
+      <p class="love-prompt">Tap the flower for a little surprise 👇</p>
+      <button id="loveBtn" class="love-btn" aria-label="Send love">
+        <span class="love-btn-flower">🌸</span>
+        <span class="love-btn-text">Send Honey Some Love</span>
+      </button>
+      <p class="click-counter" id="clickCounter" aria-live="polite"></p>
+    </section>
+
+    <footer class="footer">
+      <p>Made with 💗 for Honey — get well soon, we can't wait to see you shine again!</p>
+    </footer>
+
+  </main>
+
+<script src="script.js"></script>
+</body>
+</html>
