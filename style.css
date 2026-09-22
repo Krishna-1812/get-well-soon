@@ -273,58 +273,54 @@ body {
   font-size: 1.3rem;
 }
 
-/* ---------- Wishes ---------- */
-.wishes {
-  padding: 1rem 0 4rem;
-  text-align: center;
+/* ---------- Bouquet caption + regenerate ---------- */
+.bouquet-caption {
+  font-size: 0.95rem;
+  color: #a15c82;
+  font-weight: 600;
+  margin: 0.5rem 0 0.75rem;
+  min-height: 1.3rem;
 }
 
-.wishes-title {
-  font-family: 'Pacifico', cursive;
-  font-weight: 400;
-  color: var(--text-plum);
-  font-size: clamp(1.5rem, 4vw, 2.1rem);
-  margin-bottom: 2rem;
+.regen-btn {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--baby-pink-deep);
+  background: #ffffffb0;
+  border: 1.5px solid var(--baby-pink-dark);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: transform 0.15s ease, background 0.15s ease;
 }
 
-.wish-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
+.regen-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: #ffffff;
 }
 
-.wish-card {
-  background: #ffffffcc;
-  backdrop-filter: blur(4px);
-  border-radius: 20px;
-  padding: 1.75rem 1.25rem;
-  box-shadow: 0 10px 25px var(--shadow);
-  border: 1px solid var(--baby-pink);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.regen-btn:active {
+  transform: translateY(0) scale(0.96);
 }
 
-.wish-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 16px 32px var(--shadow);
+.regen-btn:focus-visible {
+  outline: 3px solid var(--baby-pink-deep);
+  outline-offset: 2px;
 }
 
-.wish-emoji {
-  font-size: 2.2rem;
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  animation: float-emoji 3s ease-in-out infinite;
+.sparkle {
+  font-size: 11px;
+  fill: var(--accent-gold);
+  animation: twinkle 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
-@keyframes float-emoji {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-6px) rotate(6deg); }
-}
-
-.wish-card p {
-  margin: 0;
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: var(--text-plum);
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.15); }
 }
 
 /* ---------- Love Button ---------- */
